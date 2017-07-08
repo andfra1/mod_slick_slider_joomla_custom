@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.7.2" client="site" method="upgrade">
+    <name>slick slider</name>
+    <author>Ken Wheeler, Franciszek Andruszkiewicz</author>
+    <creationDate>07.07.2017</creationDate>
+    <copyright>OpenSource</copyright>
+    <version>1.0</version>
+    <description>slickSlider is a Joomla! module based on Ken's Wheeler's slick.js. More info about source: http://kenwheeler.github.io/slick/</description>
+    <files>
+        <filename>mod_slickSlider.xml</filename>
+        <filename module="mod_slickSlider">mod_slickSlider.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+        <folder>slick</folder>
+        <folder>custom</folder>
+        <folder>images</folder>
+        <folder>language</folder>
+    </files>
+    <languages>
+		<language tag="en-GB">language/en-GB.mod_slickSlider.ini</language>
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="slider-width" type="text" default="100%" label="Slider width : " description="You can put any value (php, js etc.)! if it;s px or precent remember about '' " />
+                <field name="slider-height" type="text" default="window.innerHeight" label="Slider height : " description="You can put any value (php, js etc.)! if it;s px or precent remember about '' " />
+                <field name="indicators" type="radio" default="true" label="Indicators: " description="" class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+                <field name="arrows" type="radio" default="true" label="Arrows: " description="" class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+                <field name="autoplay" type="radio" default="true" value="true" label="Autoplay: " description="" class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+                <field name="autoplayspeed" type="text" default="3000" label="Autoplay speed (ms): " description="" class="btn-group btn-group-yesno" />
+                <field name="animationspeed" type="text" default="300" label="Animation speed (ms): " description="" />
+            
+            <!-- slide 1 -->   
+            <field name="slide_1_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_1_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_1_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 2 -->   
+            <field name="slide_2_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_2_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_2_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 3 -->   
+            <field name="slide_3_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_3_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_3_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 4 -->   
+            <field name="slide_4_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_4_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_4_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 5 -->   
+            <field name="slide_5_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_5_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_5_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 6 -->   
+            <field name="slide_6_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_6_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_6_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 7 -->   
+            <field name="slide_7_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_7_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_7_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 8 -->   
+            <field name="slide_8_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_8_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_8_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 9 -->   
+            <field name="slide_9_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_9_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_9_url" type="text" default="" label="Link :" description=""/>
+
+            <!-- slide 10 -->   
+            <field name="slide_10_image" type="media" default="" label="Select image:" description=""/>
+			<field name="slide_10_desc" type="textarea" default="" label="Text on image :" description=""/>
+			<field name="slide_10_url" type="text" default="" label="Link :" description=""/>
+
+            </fieldset>
+        </fields>
+    </config>
+</extension>
