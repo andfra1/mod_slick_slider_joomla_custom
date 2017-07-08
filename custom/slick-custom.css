@@ -17,7 +17,6 @@
 .slickSlider_wrapper div {
     position: relative;
     width: 100%;
-    background-color: aqua;
     opacity: 1;
 }
 
@@ -32,6 +31,7 @@
     z-index: 1;
     color: #000;
     font-size: 1.2em;
+    word-wrap: break-word;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
 }
