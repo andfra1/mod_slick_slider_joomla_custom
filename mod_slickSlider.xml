@@ -39,6 +39,7 @@
                 <field name="autoplayspeed" type="text" default="3000" label="Autoplay speed (ms): " description="" class="btn-group btn-group-yesno" />
                 <field name="animationspeed" type="text" default="300" label="Animation speed (ms): " description="" />
             
+            <field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Slides&lt;/div&gt;" />
             <!-- slide 1 -->   
             <field name="slide_1_image" type="media" default="" label="Select image:" description=""/>
 			<field name="slide_1_desc" type="textarea" default="" label="Text on image :" description=""/>
