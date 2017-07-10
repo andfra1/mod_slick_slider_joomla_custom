@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-    jQuery('.slickSlider_wrapper').slick({
+    jQuery('#slickSlider').slick({
             lazyLoad: 'ondemand',
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -16,5 +16,5 @@ jQuery(document).ready(function(){
             useTransform: true, //[boolean] Enable/Disable CSS Transforms
         });
 
-    jQuery('.slickSlider_wrapper').css('max-height', window.innerHeight); //remove this if you don't want set maximum height of slider
+    jQuery('#slickSlider').css('max-height', window.innerHeight); //remove this if you don't want set maximum height of slider
 });

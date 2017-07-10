@@ -3,24 +3,21 @@
     padding: 0;
     border: 0;
     position: relative;
-}
-
-.slickSlider_wrapper {
-    position: relative;
     display: flex;
     align-items: center;
     z-index: 5;
     cursor: pointer;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
-.slickSlider_wrapper div {
+#slickSlider div {
     position: relative;
     width: 100%;
-    opacity: 1;
+    display: flex;
+    align-items: center;
 }
 
-.slickSlider_wrapper div p {
+#slickSlider div p {
     position: absolute;
     display: block;
     margin: 0px;
@@ -36,7 +33,7 @@
     -webkit-margin-after: 0;
 }
 
-.slickSlider_wrapper div p:before {
+#slickSlider div p:before {
     content: '';
     position: absolute;
     top: 0;
@@ -49,13 +46,13 @@
     opacity: 0.8;
 }
 
-.slickSlider_wrapper div img {
+#slickSlider div img {
     position: relative;
     display: block;
     width: 100%;
 }
 
-.slickSlider_wrapper.slick-initialized.slick-slider.slick-dotted {
+#slickSlider.slick-initialized.slick-slider.slick-dotted {
     margin: 0;
 }
 
@@ -64,7 +61,7 @@ ul.slick-dots {
 }
 
 .slick-next.slick-arrow {
-    right: 20px;
+    right: 40px;
 }
 
 .slick-prev.slick-arrow {
@@ -75,11 +72,15 @@ ul.slick-dots {
     z-index: 6;
 }
 
+.slick-prev:before, .slick-next:before {
+    font-size: 30px;
+}
+
 .slick-dots li button:before {
     content: '';
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     display: block;
     border-radius: 50%;
     background-color: #000;
