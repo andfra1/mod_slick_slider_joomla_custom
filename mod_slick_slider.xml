@@ -7,8 +7,8 @@
     <version>1.0</version>
     <description>slickSlider is a Joomla! module based on Ken's Wheeler's slick.js. More info about source: http://kenwheeler.github.io/slick/</description>
     <files>
-        <filename>mod_slickSlider.xml</filename>
-        <filename module="mod_slickSlider">mod_slickSlider.php</filename>
+        <filename>mod_slick_slider.xml</filename>
+        <filename module="mod_slick_slider">mod_slick_slider.php</filename>
         <filename>index.html</filename>
         <folder>tmpl</folder>
         <folder>slick</folder>
@@ -17,7 +17,7 @@
         <folder>language</folder>
     </files>
     <languages>
-		<language tag="en-GB">language/en-GB.mod_slickSlider.ini</language>
+		<language tag="en-GB">language/en-GB.mod_slick_slider.ini</language>
 	</languages>
     <config>
         <fields name="params">
