@@ -1,9 +1,9 @@
 <?php 
 // No direct access
 defined('_JEXEC') or die; 
-$doc->addStyleSheet('modules/mod_slickSlider/custom/slick-custom.css');
 $doc->addStyleSheet('modules/mod_slickSlider/slick/slick.css');
 $doc->addStyleSheet('modules/mod_slickSlider/slick/slick-theme.css');
+$doc->addStyleSheet('modules/mod_slickSlider/custom/slick-custom.css');
 ?>
 
 <div id="slickSlider">

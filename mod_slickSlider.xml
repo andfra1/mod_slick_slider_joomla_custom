@@ -22,8 +22,8 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field name="slider-width" type="text" default="100%" label="Slider width : " description="You can put any value (php, js etc.)! if it;s px or precent remember about '' " />
-                <field name="slider-height" type="text" default="window.innerHeight" label="Slider height : " description="You can put any value (php, js etc.)! if it;s px or precent remember about '' " />
+                <field name="slider-width" type="text" default="100%" label="Slider width : " description="px or precent" />
+                <field name="slider-height" type="text" default="window.innerHeight" label="Slider height : " description="px or precent" />
                 <field name="dots" type="radio" default="true" label="Dots: " description="" class="btn-group btn-group-yesno">
                     <option value="true">JYES</option>
                     <option value="false">JNO</option>
