@@ -1,94 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.7.2" client="site" method="upgrade">
-    <name>slickSlider</name>
-    <author>Ken Wheeler, Franciszek Andruszkiewicz</author>
+    <name>&lt;b style='background-color: #000; color: #00ffff; font-weight: bold; font-size: 16px; padding: 5px 15px; text-align: left'&gt;Mod Slick Slider&lt;/b&gt;</name>
+    <author>K. Wheeler, F. Andruszkiewicz</author>
     <creationDate>07.07.2017</creationDate>
     <copyright>OpenSource</copyright>
-    <version>1.0</version>
-    <description>slickSlider is a Joomla! module based on Ken's Wheeler's slick.js. More info about source: http://kenwheeler.github.io/slick/</description>
+    <version>1.1</version>
+    <description>Mod Slick Slider is a slider/rotator based on Ken Wheeler slick.js. More info about slick.js: &lt;a href="http://kenwheeler.github.io/slick/"&gt; http://kenwheeler.github.io/slick/ &lt;/a&gt;&lt;br&gt;
+    Joomla! module developer: Franciszek Andruszkiewicz, &lt;a href="http://andfra1.github.io/slick/"&gt; andfra1.github.io &lt;/a&gt;
+    </description>
     <files>
         <filename>mod_slick_slider.xml</filename>
         <filename module="mod_slick_slider">mod_slick_slider.php</filename>
         <filename>index.html</filename>
+        <folder>css</folder>
+        <folder>js</folder>
         <folder>tmpl</folder>
         <folder>slick</folder>
-        <folder>custom</folder>
         <folder>images</folder>
         <folder>language</folder>
     </files>
     <languages>
-		<language tag="en-GB">language/en-GB.mod_slick_slider.ini</language>
-	</languages>
+        <language tag="en-GB">language/en-GB.mod_slick_slider.ini</language>
+    </languages>
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field name="slider-width" type="text" default="100%" label="Slider width : " description="px or precent" />
-                <field name="slider-height" type="text" default="window.innerHeight" label="Slider height : " description="px or precent" />
-                <field name="dots" type="radio" default="true" label="Dots: " description="" class="btn-group btn-group-yesno">
+                <field name="slider-width" type="text" default="100%" label="Slider width: " description="px or precent" />
+
+                <field name="slider-height" type="text" default="100%" label="Slider height: " description="px or precent" />
+
+                <field name="accessibility" type="radio" default="true" label="Accessibility(???):" description="Enables tabbing and arrow key navigation" class="btn-group btn-group-yesno">
                     <option value="true">JYES</option>
                     <option value="false">JNO</option>
                 </field>
+
                 <field name="arrows" type="radio" default="true" label="Arrows: " description="" class="btn-group btn-group-yesno">
                     <option value="true">JYES</option>
                     <option value="false">JNO</option>
                 </field>
-                <field name="autoplay" type="radio" default="true" value="true" label="Autoplay: " description="" class="btn-group btn-group-yesno">
+
+               
+                <field name="indicators" type="radio" default="true" label="Dots:" description="Show dot indicators." class="btn-group btn-group-yesno">
                     <option value="true">JYES</option>
                     <option value="false">JNO</option>
                 </field>
-                <field name="autoplayspeed" type="text" default="3000" label="Autoplay speed (ms): " description="" class="btn-group btn-group-yesno" />
-                <field name="animationspeed" type="text" default="300" label="Animation speed (ms): " description="" />
+
+                <field name="autoplay" type="radio" default="true" label="Autoplay:" description="" class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="autoplayspeed" type="number" min="0" step="100" default="3000" showon="autoplay:true" label="Autoplay speed (ms):" description="Frequency between sliders." />
+
+                <field name="infinite" type="radio" default="true" label="Infinite sliding:" description="Infinite loop sliding." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <!-- Animation -->
+                <field name="animation" type="spacer" default="" label="&lt;b style='background-color: #000; color: #00ffff; font-weight: normal; font-size: 12px; padding: 5px 15px; text-align: left'&gt;Animation&lt;/b&gt;" description="" />
+
+                <field name="animationspeed" type="number" min="0" step="100" default="300" label="Animation speed (ms): " description="Slide/Fade animation speed" />
+
+                <field name="fade" type="radio" default="false" label="Fade or slide:" description="Enable fade." class="btn-group btn-group-yesno">
+                    <option value="true">fade</option>
+                    <option value="false">slide</option>
+                </field>
+
+                <field name="rtl" type="radio" default="false" showon="fade:false" label="Right To Left: (N/A)" description="Change the slider's direction to become right-to-left (text alignment too)." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+               
+                <!-- SLIDES DISPLAY -->
+                <field name="display" type="spacer" default="" label="&lt;b style='background-color: #000; color: #00ffff; font-weight: normal; font-size: 12px; padding: 5px 15px; text-align: left'&gt;Slides display&lt;/b&gt;" description="" />
+
+                <field name="rows" type="number" min="1" step="1" default="1" label="&lt;i style='color: #ccc;'&gt;Slide to start on: (N/A)&lt;/i&gt;" description="Setting this to more than 1 initializes grid mode. Use slidesPerRow to set how many slides should be in each row." />
+
+                <!--responsive: none, //[object] Object containing breakpoints and settings objects (see demo). Enables settings sets at given screen width. Set settings to "unslick" instead of an object to disable slick at a given breakpoint.
+                -->
+
+                <field name="slidesPerRow" type="number" min="1" step="1" default="1" label="&lt;i style='color: #ccc;'&gt;Slides Per Row: (N/A)&lt;/i&gt;" description="With grid mode intialized via the rows option, this sets how many slides are in each grid row." />
+
+                <field name="slidesToShow" type="number" min="1" step="1" default="1" label="Number of slides to show:" description="Number of slides to show." />
+
+                <field name="slidesToScroll" type="number" min="1" step="1" default="1" label="Number of slides to scroll:" description="Number of slides to scroll." />
+
+                <field name="slidesToShow" type="number" min="1" step="1" default="1" label="Number of slides to show:" description="Number of slides to show." />
+
+
+                <field name="centerMode" type="radio" default="false" label="Center mode:" description="Enables centered view with partial prev/next slides. Use with odd numbered slidesToShow counts." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="centerPadding" type="text" default="50px" label="Center padding:" showon="centerMode:true" description="Side padding when in center mode (px or %)." />
+
+                <field name="variableWidth" type="radio" default="false" label="Variable width:" description="Variable width slides." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="adaptiveHeight" type="radio" default="false" label="Adaptive height:" description="Enables adaptive height for single slide horizontal carousels." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="waitForAnimate" type="radio" default="true" label="Wait For Animate:" description="Ignores requests to advance the slide while animating." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+
+
+                <!-- BEHAVIUOR -->
+                <field name="behaviour" type="spacer" default="" label="&lt;b style='background-color: #000; color: #00ffff; font-weight: normal; font-size: 12px; padding: 5px 15px; text-align: left'&gt; Behaviour &lt;/b&gt;" description="" />
+
+                <field name="mobileFirst" type="radio" default="false" label="Mobile first:" description="Responsive settings use mobile first calculation." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="lazyLoad" type="radio" default="ondemand" label="Lazy load:" description="Set lazy loading technique." class="btn-group btn-group-yesno">
+                    <option value="ondemand">on demand</option>
+                    <option value="progressive">progressive</option>
+                </field>
+               
+                <field name="draggable" type="radio" default="true" label="Draggable:" description="Enable mouse dragging." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="focusOnSelect" type="radio" default="false" label="Focus on select:" description="Enable focus on selected element (click)." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="swipe" type="radio" default="true" label="Swipe:" description="Enable swiping." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="swipeToSlide" type="radio" default="false" label="Swipe to slide:" description="Allow users to drag or swipe directly to a slide irrespective of slidesToScroll." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="touchMove" type="radio" default="true" label="Touch Move: (N/A?)" description="Enable slide motion with touch." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="vertical" type="radio" default="false" label="Vertical slide mode:" description="Vertical slide mode." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="verticalSwiping" type="radio" default="false" label="Vertical Swiping:" showon="vertical:true" description="Vertical swipe mode." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+                
+
+                <!-- PAUSES -->
+                <field name="pauses" type="spacer" default="Pauses" label="&lt;b style='background-color: #000; color: #00ffff; font-weight: normal; font-size: 12px; padding: 5px 15px; text-align: left'&gt; Pauses &lt;/b&gt;" description="" />
+
+                <field name="pauseOnFocus" type="radio" default="true" label="Pause On Focus:" description="Pause Autoplay On Focus." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="pauseOnHover" type="radio" default="true" label="Pause On Hover:" description="Pause Autoplay On Hover." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field name="pauseOnDotsHover" type="radio" default="false" label="Pause On Dots Hover:" description="Pause Autoplay when a dot is hovered." class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+            </fieldset>
+
+
+            <fieldset name="More_Options">
+                
+                <field name="prevArrow" type="text" showon="arrows:true" default="&lt;button type='button' class='slick-prev'&gt;Prev&lt;/button&gt;" label="&lt;b&gt;Prev Arrow:&lt;/b&gt;" description="Allows you to select a node or customize the HTML." filter="raw" />
+               
+                <field name="nextArrow" type="text" showon="arrows:true" default="&lt;button type='button' class='slick-next'&gt;Next&lt;/button&gt;" label="&lt;b&gt;Next Arrow:&lt;/b&gt;" description="Allows you to select a node or customize the HTML." filter="raw" />
+
+                <field name="dotsClass" type="text" showon="indicators:true" default="slick-dots" label="&lt;b&gt;Dot class:&lt;/b&gt;" description="Class for slide indicator dots container." />
+
+                 <field name="useCSS" type="radio" default="true" label="CSS transitions:" description="Enable/Disable CSS Transitions." class="btn-group btn-group-yesno">
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </field>
+
+                <field name="useTransform" type="radio" default="true" label="CSS transforms:" description="Enable/Disable CSS Transforms." class="btn-group btn-group-yesno">
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </field>
+
+                <field name="cssEase" type="text" default="ease" label="CSS Ease:" description="CSS3 Animation Easing. Hint: ease, linear, ease-in, ease-out, ease-in-out, step-start, step-end, steps(int,start|end), cubic-bezier(n,n,n,n), initial, inherit" class="btn-group btn-group-yesno" />
+
+                <field name="easing" type="text" default="linear" label="Easing (jQ):" description="Add easing for jQuery animate. Use with easing libraries or default easing methods." />
+                
+                <field name="edgeFriction" type="number" min="0.01" step="0.01" default="0.15" label="Edge friction:" description="Resistance when swiping edges of non-infinite carousels." />
+
+                <field name="initialSlide" type="number" min="0" step="1" default="0" label="Slide to start on:" description="Slide to start on." />
+                
+                <field name="asNavFor" type="text" default="null" label="&lt;i style='color: #ccc;'&gt;As nav for: (N/A)&lt;/i&gt;" description="Set the slider to be the navigation of other slider (Class or ID Name) node or customize the HTML for the 'Previous' arrow." />
+
+                <field name="respondTo" type="radio" default="window" label="Respond to:" description="Width that responsive object responds to. Can be 'window', 'slider' or 'min' (the smaller of the two)." class="btn-group btn-group-yesno">
+                    <option value="window">window</option>
+                    <option value="slider">slider</option>
+                    <option value="min">min</option>
+                </field>
+
+                <field name="slide" type="text" default="" label="Slide (element):" description="Element query to use as slide." />
+
+                <field name="touchThreshold" type="number" min="1" step="1" default="5" label="Touch Threshold:" description="To advance slides, the user must swipe a length of (1/touchThreshold) * the width of the slider." />
+
+                <field name="zIndex" type="number" min="-1" step="1" default="1000" label="z-index:" description="Set the zIndex values for slides, useful for IE9 and lower." />
+
+            </fieldset>
             
-            <field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Slides&lt;/div&gt;" />
-            <!-- slide 1 -->   
-            <field name="slide_1_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_1_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_1_url" type="text" default="" label="Link :" description=""/>
+            <fieldset name="Slides">
+                <!-- slide 1 -->
+                <field name="slide_1_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_1_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_1_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 2 -->   
-            <field name="slide_2_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_2_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_2_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 2 -->
+                <field name="slide_2_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_2_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_2_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 3 -->   
-            <field name="slide_3_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_3_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_3_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 3 -->
+                <field name="slide_3_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_3_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_3_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 4 -->   
-            <field name="slide_4_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_4_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_4_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 4 -->
+                <field name="slide_4_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_4_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_4_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 5 -->   
-            <field name="slide_5_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_5_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_5_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 5 -->
+                <field name="slide_5_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_5_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_5_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 6 -->   
-            <field name="slide_6_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_6_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_6_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 6 -->
+                <field name="slide_6_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_6_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_6_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 7 -->   
-            <field name="slide_7_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_7_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_7_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 7 -->
+                <field name="slide_7_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_7_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_7_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 8 -->   
-            <field name="slide_8_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_8_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_8_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 8 -->
+                <field name="slide_8_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_8_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_8_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 9 -->   
-            <field name="slide_9_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_9_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_9_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 9 -->
+                <field name="slide_9_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_9_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_9_url" type="text" default="" label="Link :" description="" />
 
-            <!-- slide 10 -->   
-            <field name="slide_10_image" type="media" default="" label="Select image:" description=""/>
-			<field name="slide_10_desc" type="textarea" default="" label="Text on image :" description=""/>
-			<field name="slide_10_url" type="text" default="" label="Link :" description=""/>
+                <!-- slide 10 -->
+                <field name="slide_10_image" type="media" default="" label="Select image:" description="" />
+                <field name="slide_10_desc" type="textarea" default="" label="Text on image :" description="" />
+                <field name="slide_10_url" type="text" default="" label="Link :" description="" />
 
             </fieldset>
         </fields>
